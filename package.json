@@ -2,12 +2,21 @@
   "name": "@aboutbits/pagination",
   "version": "0.1.0",
   "description": "Pagination",
+  "keywords": [],
+  "author": "AboutBits",
+  "license": "MIT",
+  "private": false,
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ext js,ts,tsx src",
     "lint:fix": "npm run lint -- --fix",
-    "test": "jest --config jestconfig.json"
+    "test": "jest --config jestconfig.json",
+
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "version": "npm run lint:fix && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -16,9 +25,9 @@
   "files": [
     "lib/**/*"
   ],
-  "keywords": [],
-  "author": "AboutBits",
-  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "bugs": {
     "url": "https://github.com/aboutbits/pagination/issues"
   },
