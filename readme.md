@@ -6,7 +6,7 @@ This project includes a pagination calculation, where you can simply pass some b
 ## Table of content
 
 - [Usage](#usage)
-- [Build & Publish](#build-publish)
+- [Build & Publish](#build--publish)
 - [Information](#information)
 
 ## Usage
