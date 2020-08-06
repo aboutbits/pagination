@@ -1,8 +1,12 @@
 {
   "name": "@aboutbits/pagination",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Pagination",
-  "keywords": ["pagination", "react", "vuejs"],
+  "keywords": [
+    "pagination",
+    "react",
+    "vuejs"
+  ],
   "author": "AboutBits",
   "license": "MIT",
   "private": false,
