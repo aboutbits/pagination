@@ -23,7 +23,7 @@
     "url": "git+https://github.com/aboutbits/pagination.git"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "publishConfig": {
     "access": "public"
