@@ -23,6 +23,7 @@
     "url": "git+https://github.com/aboutbits/pagination.git"
   },
   "files": [
+    "readme.md",
     "dist/**/*"
   ],
   "publishConfig": {
