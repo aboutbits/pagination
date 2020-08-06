@@ -1,7 +1,7 @@
 Pagination
 ==========
 
-This project includes a pagination calculation, where you can simply pass some basic information to the calcualtion function, and in return you receive an object with all relevant pagination information.
+This pagacke includes a pagination calculation, where you can simply pass some basic information to the calcualtion function, and in return you receive an object with all relevant pagination information.
 
 ## Table of content
 
