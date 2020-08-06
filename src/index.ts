@@ -44,7 +44,7 @@ const calculatePagination = (
   page: number,
   size: number,
   total: number,
-  maxPages: number = 5
+  maxPages = 5
 ): {
   previous: {
     number: number
