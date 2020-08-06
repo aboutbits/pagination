@@ -6,7 +6,7 @@
   "author": "AboutBits",
   "license": "MIT",
   "private": false,
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ext js,ts,tsx src",
