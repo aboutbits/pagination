@@ -56,7 +56,7 @@ const calculatePagination = (
   }
   pages: {
     number: number
-    isCurrentPage: boolean
+    isCurrent: boolean
   }[]
 } | null => {
   if (total <= size) {
@@ -80,7 +80,7 @@ const calculatePagination = (
       (visiblePage) => {
         return {
           number: visiblePage,
-          isCurrentPage: visiblePage === page,
+          isCurrent: visiblePage === page,
         }
       }
     ),
