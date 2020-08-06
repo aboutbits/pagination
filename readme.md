@@ -73,6 +73,14 @@ This would return the following object:
 
 ## Build & Publish
 
+To build and publish the package, simply commit all changes and push them to master. Then run one of the following commands locally:
+
+```bash
+npm version patch
+npm version minor
+npm version major
+```
+
 ## Information
 
 About Bits is a company based in South Tyrol, Italy. You can find more information about us on [our website](https://aboutbits.it).
