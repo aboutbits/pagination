@@ -24,7 +24,9 @@ Second, you can call the calculate function by passing the following information
 - `page`: The current page
 - `size`: The amount of items shown per page
 - `total`: The amount of total items in the list/collection
-- `maxPages`: The maximum amount of pages that should be shown (default: 5)
+- `config`: A configuration object containing the following possible configuration values:
+  - `firstPage`: The first page of the pagination (default: 1)
+  - `maxPages`: The maximum amount of pages that should be shown (default: 5)
 
 In return, you receive an object with all relevant information:
 
