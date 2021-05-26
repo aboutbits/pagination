@@ -47,8 +47,10 @@ const calculatePagination = (
   page: number,
   size: number,
   total: number,
-  maxPages = 5,
-  firstPage = 1
+  config?: {
+    firstPage?: number
+    maxPages?: number
+  }
 ): {
   previous: {
     number: number
@@ -66,6 +68,9 @@ const calculatePagination = (
   if (total <= size) {
     return null
   }
+
+  const firstPage = config?.firstPage ?? 1
+  const maxPages = config?.maxPages ?? 5
 
   const lastPage = Math.ceil(total / size) + (firstPage - 1)
   const isCurrentTheFirstPage = page === firstPage

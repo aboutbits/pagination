@@ -29,7 +29,9 @@ it('should return the maximum number of pages', () => {
   const size = 5
   const total = 50
   const maxPages = 5
-  const pagination = calculatePagination(page, size, total, maxPages)
+  const pagination = calculatePagination(page, size, total, {
+    maxPages: maxPages,
+  })
 
   expect(pagination).not.toBeNull()
   expect(pagination?.pages).toHaveLength(5)
