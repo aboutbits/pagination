@@ -1,12 +1,13 @@
 const calculateVisiblePages = (
   page: number,
-  total: number,
+  firstPage: number,
+  lastPage: number,
   maxPages: number
 ): number[] => {
   const range = Math.floor(maxPages / 2)
-  let lowerBound = 1
+  let lowerBound = firstPage
   let lowerBoundRest = 0
-  let upperBound = total
+  let upperBound = lastPage
   let upperBoundRest = 0
 
   if (page - range >= 1) {
@@ -15,20 +16,22 @@ const calculateVisiblePages = (
     lowerBoundRest = (page - range - 1) * -1
   }
 
-  if (page + range <= total) {
+  if (page + range <= lastPage) {
     upperBound = page + range
   } else {
-    upperBoundRest = (total - range - page) * -1
+    upperBoundRest = (lastPage - range - page) * -1
   }
 
   if (upperBoundRest > 0) {
     lowerBound =
-      lowerBound - upperBoundRest > 0 ? lowerBound - upperBoundRest : 1
+      lowerBound - upperBoundRest > 0 ? lowerBound - upperBoundRest : firstPage
   }
 
   if (lowerBoundRest > 0) {
     upperBound =
-      upperBound + lowerBoundRest < total ? upperBound + lowerBoundRest : total
+      upperBound + lowerBoundRest < lastPage
+        ? upperBound + lowerBoundRest
+        : lastPage
   }
 
   const pages = []
@@ -44,7 +47,8 @@ const calculatePagination = (
   page: number,
   size: number,
   total: number,
-  maxPages = 5
+  maxPages = 5,
+  firstPage = 1
 ): {
   previous: {
     number: number
@@ -63,20 +67,20 @@ const calculatePagination = (
     return null
   }
 
-  const lastPage = Math.ceil(total / size)
-  const isCurrentTheFirstPage = page === 1
+  const lastPage = Math.ceil(total / size) + (firstPage - 1)
+  const isCurrentTheFirstPage = page === firstPage
   const isCurrentTheLastPage = page === lastPage
 
   return {
     previous: {
-      number: isCurrentTheFirstPage ? 1 : page - 1,
+      number: isCurrentTheFirstPage ? firstPage : page - 1,
       isDisabled: isCurrentTheFirstPage,
     },
     next: {
       number: isCurrentTheLastPage ? lastPage : page + 1,
       isDisabled: isCurrentTheLastPage,
     },
-    pages: calculateVisiblePages(page, lastPage, maxPages).map(
+    pages: calculateVisiblePages(page, firstPage, lastPage, maxPages).map(
       (visiblePage) => {
         return {
           number: visiblePage,
