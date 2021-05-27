@@ -78,7 +78,7 @@ const calculatePagination = (
   const indexType = config?.indexType ?? IndexType.ONE_BASED
   const maxPages = config?.maxPages ?? 5
 
-  const firstPage = indexType == IndexType.ZERO_BASED ? 0 : 1
+  const firstPage = indexType === IndexType.ZERO_BASED ? 0 : 1
   const lastPage = Math.ceil(total / size) + (firstPage - 1)
   const isCurrentTheFirstPage = page === firstPage
   const isCurrentTheLastPage = page === lastPage
@@ -97,7 +97,7 @@ const calculatePagination = (
         return {
           indexNumber: visiblePage,
           displayNumber:
-            indexType == IndexType.ZERO_BASED ? visiblePage + 1 : visiblePage,
+            indexType === IndexType.ZERO_BASED ? visiblePage + 1 : visiblePage,
           isCurrent: visiblePage === page,
         }
       }
