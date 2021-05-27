@@ -1,3 +1,8 @@
+enum IndexType {
+  ZERO_BASED,
+  ONE_BASED,
+}
+
 const calculateVisiblePages = (
   page: number,
   firstPage: number,
@@ -48,20 +53,21 @@ const calculatePagination = (
   size: number,
   total: number,
   config?: {
-    firstPage?: number
+    indexType?: IndexType
     maxPages?: number
   }
 ): {
   previous: {
-    number: number
+    indexNumber: number
     isDisabled: boolean
   }
   next: {
-    number: number
+    indexNumber: number
     isDisabled: boolean
   }
   pages: {
-    number: number
+    indexNumber: number
+    displayNumber: number
     isCurrent: boolean
   }[]
 } | null => {
@@ -69,26 +75,29 @@ const calculatePagination = (
     return null
   }
 
-  const firstPage = config?.firstPage ?? 1
+  const indexType = config?.indexType ?? IndexType.ONE_BASED
   const maxPages = config?.maxPages ?? 5
 
+  const firstPage = indexType == IndexType.ZERO_BASED ? 0 : 1
   const lastPage = Math.ceil(total / size) + (firstPage - 1)
   const isCurrentTheFirstPage = page === firstPage
   const isCurrentTheLastPage = page === lastPage
 
   return {
     previous: {
-      number: isCurrentTheFirstPage ? firstPage : page - 1,
+      indexNumber: isCurrentTheFirstPage ? firstPage : page - 1,
       isDisabled: isCurrentTheFirstPage,
     },
     next: {
-      number: isCurrentTheLastPage ? lastPage : page + 1,
+      indexNumber: isCurrentTheLastPage ? lastPage : page + 1,
       isDisabled: isCurrentTheLastPage,
     },
     pages: calculateVisiblePages(page, firstPage, lastPage, maxPages).map(
       (visiblePage) => {
         return {
-          number: visiblePage,
+          indexNumber: visiblePage,
+          displayNumber:
+            indexType == IndexType.ZERO_BASED ? visiblePage + 1 : visiblePage,
           isCurrent: visiblePage === page,
         }
       }
@@ -96,4 +105,4 @@ const calculatePagination = (
   }
 }
 
-export { calculatePagination }
+export { calculatePagination, IndexType }

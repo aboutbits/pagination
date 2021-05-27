@@ -25,7 +25,7 @@ Second, you can call the calculate function by passing the following information
 - `size`: The amount of items shown per page
 - `total`: The amount of total items in the list/collection
 - `config`: A configuration object containing the following possible configuration values:
-  - `firstPage`: The first page of the pagination (default: 1)
+  - `indexType`: The starting point of the pagination (default: IndexType.ONE_BASED)
   - `maxPages`: The maximum amount of pages that should be shown (default: 5)
 
 In return, you receive an object with all relevant information:
@@ -43,32 +43,37 @@ This would return the following object:
 ```json
 {
   "previous": {
-    "number": 1,
+    "indexNumber": 1,
     "isDisabled": true
   },
   "next": {
-    "number": 2,
+    "indexNumber": 2,
     "isDisabled": false
   },
   "pages": [
     {
-      "number": 1,
+      "indexNumber": 1,
+      "displayNumber": 1,
       "isCurrent": true
     },
     {
-      "number": 2,
+      "indexNumber": 2,
+      "displayNumber": 2,
       "isCurrent": false
     },
     {
-      "number": 3,
+      "indexNumber": 3,
+      "displayNumber": 3,
       "isCurrent": false
     },
     {
-      "number": 4,
+      "indexNumber": 4,
+      "displayNumber": 4,
       "isCurrent": false
     },
     {
-      "number": 5,
+      "indexNumber": 5,
+      "displayNumber": 5,
       "isCurrent": false
     }
   ]
