@@ -1,7 +1,8 @@
 Pagination
 ==========
 
-[![npm version](https://badge.fury.io/js/%40aboutbits%2Fpagination.svg)](https://badge.fury.io/js/%40aboutbits%2Fpagination)
+[![npm package](https://badge.fury.io/js/%40aboutbits%2Fpagination.svg)](https://badge.fury.io/js/%40aboutbits%2Fpagination)
+[![license](https://img.shields.io/github/license/aboutbits/pagination)](https://github.com/aboutbits/pagination/blob/master/license.md)
 
 This pagacke includes a pagination calculation, where you can simply pass some basic information to the calcualtion function, and in return you receive an object with all relevant pagination information.
 
