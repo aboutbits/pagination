@@ -48,14 +48,21 @@ const calculateVisiblePages = (
   return pages
 }
 
+type CalculatePaginationConfig = {
+  indexType: IndexType
+  maxPages: number
+}
+
+const defaultCalculatePaginationConfig: CalculatePaginationConfig = {
+  indexType: IndexType.ONE_BASED,
+  maxPages: 5,
+}
+
 const calculatePagination = (
   page: number,
   size: number,
   total: number,
-  config?: {
-    indexType?: IndexType
-    maxPages?: number
-  }
+  config?: Partial<CalculatePaginationConfig>
 ): {
   previous: {
     indexNumber: number
@@ -71,12 +78,14 @@ const calculatePagination = (
     isCurrent: boolean
   }[]
 } | null => {
+  const { indexType, maxPages } = {
+    ...defaultCalculatePaginationConfig,
+    ...config,
+  }
+
   if (total <= size) {
     return null
   }
-
-  const indexType = config?.indexType ?? IndexType.ONE_BASED
-  const maxPages = config?.maxPages ?? 5
 
   const firstPage = indexType === IndexType.ZERO_BASED ? 0 : 1
   const lastPage = Math.ceil(total / size) + (firstPage - 1)
