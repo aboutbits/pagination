@@ -1,10 +1,12 @@
-import { calculatePagination } from '../index'
+import { calculatePagination, IndexType } from '../index'
 
 it('should return no pagination if not enough items are given', () => {
   const page = 1
   const size = 5
   const total = 2
-  const pagination = calculatePagination(page, size, total)
+  const pagination = calculatePagination(page, size, total, {
+    indexType: IndexType.ONE_BASED,
+  })
 
   expect(pagination).toBeNull()
 })
@@ -12,7 +14,9 @@ it('should return only a few pages', () => {
   const page = 2
   const size = 5
   const total = 15
-  const pagination = calculatePagination(page, size, total)
+  const pagination = calculatePagination(page, size, total, {
+    indexType: IndexType.ONE_BASED,
+  })
 
   expect(pagination).not.toBeNull()
   expect(pagination?.pages).toHaveLength(3)
@@ -33,6 +37,7 @@ it('should return the maximum number of pages', () => {
   const total = 50
   const maxPages = 5
   const pagination = calculatePagination(page, size, total, {
+    indexType: IndexType.ONE_BASED,
     maxPages: maxPages,
   })
 
@@ -59,7 +64,9 @@ it('should disable the previous link', () => {
   const page = 1
   const size = 5
   const total = 10
-  const pagination = calculatePagination(page, size, total)
+  const pagination = calculatePagination(page, size, total, {
+    indexType: IndexType.ONE_BASED,
+  })
 
   expect(pagination).not.toBeNull()
 
@@ -76,7 +83,9 @@ it('should disable the next link', () => {
   const page = 2
   const size = 5
   const total = 10
-  const pagination = calculatePagination(page, size, total)
+  const pagination = calculatePagination(page, size, total, {
+    indexType: IndexType.ONE_BASED,
+  })
 
   expect(pagination).not.toBeNull()
 
