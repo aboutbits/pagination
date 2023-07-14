@@ -54,7 +54,7 @@ type CalculatePaginationConfig = {
 }
 
 const defaultCalculatePaginationConfig: CalculatePaginationConfig = {
-  indexType: IndexType.ONE_BASED,
+  indexType: IndexType.ZERO_BASED,
   maxPages: 5,
 }
 
