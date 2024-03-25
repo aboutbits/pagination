@@ -7,9 +7,9 @@
 
 # Project
 /node_modules
-/dist
 
 # Build
+/dist
 *.tsbuildinfo
 
 # ESLint
