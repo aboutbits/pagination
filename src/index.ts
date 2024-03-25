@@ -7,7 +7,7 @@ const calculateVisiblePages = (
   page: number,
   firstPage: number,
   lastPage: number,
-  maxPages: number
+  maxPages: number,
 ): number[] => {
   const range = Math.floor(maxPages / 2)
   let lowerBound = firstPage
@@ -62,7 +62,7 @@ const calculatePagination = (
   page: number,
   size: number,
   total: number,
-  config?: Partial<CalculatePaginationConfig>
+  config?: Partial<CalculatePaginationConfig>,
 ): {
   previous: {
     indexNumber: number
@@ -109,7 +109,7 @@ const calculatePagination = (
             indexType === IndexType.ZERO_BASED ? visiblePage + 1 : visiblePage,
           isCurrent: visiblePage === page,
         }
-      }
+      },
     ),
   }
 }
