@@ -22,14 +22,21 @@ jobs:
         with:
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
       - uses: aboutbits/github-actions-base/git-setup@v2
+      - uses: aboutbits/github-actions-node/configure-github-npm-registry-access@v3
+      - uses: aboutbits/github-actions-node/configure-github-npm-registry-organization@v3
       - uses: aboutbits/github-actions-node/build-and-publish-package@v3
         id: package
         with:
           node-version: ${{ env.NODE_VERSION }}
-          registry-url: 'https://registry.npmjs.org'
-          registry-token: ${{ secrets.NPM_TOKEN }}
+          registry-url: 'https://npm.pkg.github.com'
+          registry-token: ${{ secrets.GITHUB_TOKEN }}
           increment: ${{ github.event.inputs.increment }}
           preid: ${{ github.event.inputs.preid }}
       - uses: aboutbits/github-actions-base/github-create-release@v2
         with:
           tag-name: 'v${{ steps.package.outputs.version }}'
+          release-description: |
+            ```bash
+            npm install ${{ steps.package.outputs.name }}@^${{ steps.package.outputs.version }}
+            ```
+          release-notes-generation: 'true'
