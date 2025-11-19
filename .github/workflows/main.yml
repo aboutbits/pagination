@@ -15,11 +15,11 @@ jobs:
         node_version: [18, 20, 22]
     steps:
       - uses: actions/checkout@v5
-      - uses: aboutbits/github-actions-node/configure-github-npm-registry-access@v3
-      - uses: aboutbits/github-actions-node/configure-github-npm-registry-organization@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v3
         with:
           node-version: ${{ matrix.node_version }}
+          registry-url: 'https://npm.pkg.github.com'
+          registry-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Lint
         run: npm run lint
         shell: bash
@@ -35,11 +35,11 @@ jobs:
         node_version: [18, 20, 22]
     steps:
       - uses: actions/checkout@v5
-      - uses: aboutbits/github-actions-node/configure-github-npm-registry-access@v3
-      - uses: aboutbits/github-actions-node/configure-github-npm-registry-organization@v3
       - uses: aboutbits/github-actions-node/setup-and-install@v3
         with:
           node-version: ${{ matrix.node_version }}
+          registry-url: 'https://npm.pkg.github.com'
+          registry-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Test
         run: npm run test
         shell: bash
