@@ -1,4 +1,4 @@
-import { calculatePagination, IndexType } from '../index'
+import { IndexType, calculatePagination } from '../index'
 
 it('should return no pagination if not enough items are given', () => {
   const page = 1
@@ -38,7 +38,7 @@ it('should return the maximum number of pages', () => {
   const maxPages = 5
   const pagination = calculatePagination(page, size, total, {
     indexType: IndexType.ONE_BASED,
-    maxPages: maxPages,
+    maxPages,
   })
 
   expect(pagination).not.toBeNull()
