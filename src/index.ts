@@ -114,4 +114,4 @@ const calculatePagination = (
   }
 }
 
-export { calculatePagination, IndexType }
+export { IndexType, calculatePagination }
