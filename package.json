@@ -34,9 +34,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm run build:node && npm run build:esm",
-    "build:node": "tsc",
-    "build:esm": "tsc --project tsconfig.esnext.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "tsc --project tsconfig.cjs.json",
+    "build:esm": "tsc --project tsconfig.esm.json",
     "lint": "eslint --cache",
     "lint:fix": "npm run lint -- --fix",
     "typecheck": "tsc --noEmit",
